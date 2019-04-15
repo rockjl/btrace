@@ -1,0 +1,3 @@
+In order to setup the  property properly you need to create
+a "private/project.properties" relative to this folder and put there the 
+following line:
