@@ -38,6 +38,7 @@ import com.sun.btrace.comm.InstrumentCommand;
 import com.sun.btrace.comm.PrintableCommand;
 import com.sun.btrace.comm.SetSettingsCommand;
 import com.sun.btrace.comm.WireIO;
+
 import java.net.SocketException;
 
 /**

@@ -176,7 +176,12 @@ public final class BTraceProbeNode extends ClassNode implements BTraceProbe {
 
     @Override
     public byte[] getFullBytecode() {
-        return getBytecode(false);
+        try {
+            return getBytecode(false);
+        }catch(java.lang.LinkageError le){
+            debug.debug(le);
+            return null;
+        }
     }
 
     @Override
@@ -185,7 +190,8 @@ public final class BTraceProbeNode extends ClassNode implements BTraceProbe {
     }
 
     private byte[] getBytecode(boolean onlyBcpMethods) {
-        ClassWriter cw = InstrumentUtils.newClassWriter(true);
+        ClassWriter cw = null;
+        cw = InstrumentUtils.newClassWriter(true);
         ClassVisitor cv = cw;
         if (onlyBcpMethods) {
             cv = new ClassVisitor(Opcodes.ASM5, cw) {
